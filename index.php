@@ -1,5 +1,15 @@
 <?php 
 include_once "./include/header.php";
+include './database/db.php';
+//*Query For Banner part
+$banner_query = "SELECT * FROM banner WHERE id='1'";
+$banner_result = mysqli_query($conn, $banner_query);
+$banner_res = mysqli_fetch_assoc($banner_result);
+
+//*Query For About Part
+$about_query = "SELECT * FROM about WHERE id='1'";
+$about_result = mysqli_query($conn, $about_query);
+$about_res= mysqli_fetch_assoc( $about_result );
 ?>
 
   <main class="main">
@@ -10,8 +20,8 @@ include_once "./include/header.php";
       <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Alex Smith</h2>
-        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+        <h2><?= $banner_res['name'] ?></h2>
+        <p>I'm <span class="typed" data-typed-items="<?= $banner_res['skills'] ?>"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
       </div>
 
     </section><!-- /Hero Section -->
@@ -22,7 +32,7 @@ include_once "./include/header.php";
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <p><?= $about_res['aboutme'] ?></p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -32,32 +42,30 @@ include_once "./include/header.php";
             <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 content">
-            <h2>UI/UX Designer &amp; Web Developer.</h2>
+            <h2><?= $about_res['stitle'] ?></h2>
             <p class="fst-italic py-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            <?= $about_res['sdesc'] ?>
             </p>
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May 1995</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span><?= $about_res['birth_date'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><?= $about_res['website'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span><?= $about_res['phone'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span><?= $about_res['city'] ?></span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>email@example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span><?= $about_res['age'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span><?= $about_res['degree'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><?= $about_res['email'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span><?= $about_res['freelance'] ?></span></li>
                 </ul>
               </div>
             </div>
             <p class="py-3">
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque.
+            <?= $about_res['bdesc'] ?>
             </p>
           </div>
         </div>
