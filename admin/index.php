@@ -1,32 +1,6 @@
 <?php 
 include_once "./include/header.php";
 ?>
-<?php
-// রুট প্যারামিটার নেয়া
-$route = isset($_GET['route']) ? $_GET['route'] : '/';
-
-// রাউট ডিফাইন করা
-switch ($route) {
-    case '/':
-  
-        break;
-
-        case 'tables':
-        include 'tables.php';
-        break;
-
-    case 'contact':
-        include 'contact.php';
-        break;
-
-    default:
-        http_response_code(404);
-        echo "৪০৪ - পেজ পাওয়া যায়নি!";
-        break;
-}
-?>
-
-
    <main class="h-full overflow-y-auto">
           <div class="container px-6 mx-auto grid">
             <h2
