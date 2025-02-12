@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once '../database/db.php';
 $old_password = $_REQUEST['old_password'];
 $new_password = $_REQUEST['new_password'];
 $cryptpassword = password_hash($new_password, PASSWORD_DEFAULT);
@@ -23,10 +22,10 @@ if(count($errors) > 0){
     $_SESSION['errors']= $errors;
     header("Location : ../admin/profile.php");
 }else{
+    include'../database/db.php';
     $id = $_SESSION['auth']['id'];
-    $query = "UPDATE admin SET password='$cryptpassword' WHERE id='$id'";
+    $query = "UPDATE admin SET password='$cryptpassword' WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
-    if($result){
-        header('Location: ../admin/index.php');
-    }
+    $_SESSION['auth']['password'] = $cryptpassword;
+    header('Location: ../admin/profile.php');
 }
