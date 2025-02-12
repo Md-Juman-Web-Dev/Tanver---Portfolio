@@ -1,9 +1,18 @@
+<?php
+session_start();
+if(!isset($_SESSION['auth'])){
+  session_unset();
+  session_destroy();
+  header('Location: ../login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windmill Dashboard</title>
+    <title>Tanvir Shawon - Admin</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -39,7 +48,7 @@
             class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
             href="#"
           >
-            Windmill
+            NexGen Media
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -731,6 +740,7 @@
                 </template>
               </li>
               <!-- Profile menu -->
+               <li class="relative"><p><?= $_SESSION['auth']['fname'] ?></p></li>
               <li class="relative">
                 <button
                   class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
@@ -741,8 +751,8 @@
                 >
                   <img
                     class="object-cover w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
-                    alt=""
+                    src="https://api.dicebear.com/9.x/initials/svg?seed=<?= $_SESSION['auth']['fname'] ?>"
+                    alt="profile"
                     aria-hidden="true"
                   />
                 </button>
@@ -759,7 +769,7 @@
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="#"
+                        href="./profile.php"
                       >
                         <svg
                           class="w-4 h-4 mr-3"
@@ -804,7 +814,7 @@
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="#"
+                        href="../controller/LogoutUser.php"
                       >
                         <svg
                           class="w-4 h-4 mr-3"
