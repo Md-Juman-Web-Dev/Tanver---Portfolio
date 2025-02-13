@@ -10,6 +10,10 @@ $about_query = "SELECT * FROM about WHERE id='1'";
 $about_result = mysqli_query($conn, $about_query);
 $about_res= mysqli_fetch_assoc( $about_result );
 
+//*Query For Social links
+$social_query = "SELECT * FROM social_links WHERE id='1'";
+$social_result = mysqli_query($conn, $social_query);
+$social_res= mysqli_fetch_assoc($social_result);
 
 ?>
 <!DOCTYPE html>
@@ -67,11 +71,11 @@ $about_res= mysqli_fetch_assoc( $about_result );
     </a>
 
     <div class="social-links text-center">
-      <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      <a href="<?= $social_res['twitter'] ?>" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
+      <a href="<?= $social_res['facebook'] ?>" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+      <a href="<?= $social_res['instagram'] ?>" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="<?= $social_res['skype'] ?>" target="_blank" class="google-plus"><i class="bi bi-skype"></i></a>
+      <a href="<?= $social_res['linkedin'] ?>" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">

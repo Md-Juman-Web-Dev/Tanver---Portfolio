@@ -9,6 +9,7 @@ $banner_res = mysqli_fetch_assoc($banner_result);
 $about_query = "SELECT * FROM about WHERE id='1'";
 $about_result = mysqli_query($conn, $about_query);
 $about_res= mysqli_fetch_assoc( $about_result );
+
 ?>
 
   <main class="main">
