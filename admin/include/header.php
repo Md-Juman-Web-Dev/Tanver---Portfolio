@@ -194,7 +194,7 @@ $admin_row = mysqli_fetch_assoc($admin_result);
             <li class="nav-item">
               <a class="nav-link" href="./banner.php">
                 <i class="menu-icon mdi mdi-floor-plan"></i>
-                <span class="menu-title">Banner Text</span>
+                <span class="menu-title">Banner</span>
               </a>
             </li>
             <li class="nav-item">
