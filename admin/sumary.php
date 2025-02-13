@@ -62,7 +62,8 @@ $sumary_res = mysqli_fetch_assoc($result);
                      </div>
 
                   </div>
-                  <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                  <span class="text-success"><?=$_SESSION['success'] ?? null?></span><br>
+                  <button type="submit" class="btn btn-primary btn-sm mt-1">Update</button>
                </form>
             </div>
          </div>
@@ -74,4 +75,5 @@ $sumary_res = mysqli_fetch_assoc($result);
 
 
 
-<?php include_once "./include/footer.php"; ?>
+<?php include_once "./include/footer.php";
+unset($_SESSION['success']); ?>

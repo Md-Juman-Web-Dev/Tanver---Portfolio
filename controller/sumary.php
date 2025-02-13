@@ -61,7 +61,7 @@ if(count($errors) > 0){
     $result = mysqli_query($conn, $query);
     
     if($result){
-
+       $_SESSION['success'] ='Successfully updated';
        header('Location: ../admin/sumary.php');
     }
 }

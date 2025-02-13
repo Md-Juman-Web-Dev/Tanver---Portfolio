@@ -105,37 +105,41 @@ $sumary_res = mysqli_fetch_assoc($result);
 
          <div class="row gy-4">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['client'] ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong></p>
-            </div>
-          </div><!-- End Stats Item -->
+            <div class="col-lg-3 col-md-6">
+               <div class="stats-item">
+                  <i class="bi bi-emoji-smile"></i>
+                  <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['client'] ?>"
+                     data-purecounter-duration="1" class="purecounter"></span>
+                  <p><strong>Happy Clients</strong></p>
+               </div>
+            </div><!-- End Stats Item -->
 
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['project'] ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong></p>
-            </div>
-          </div><!-- End Stats Item -->
+            <div class="col-lg-3 col-md-6">
+               <div class="stats-item">
+                  <i class="bi bi-journal-richtext"></i>
+                  <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['project'] ?>"
+                     data-purecounter-duration="1" class="purecounter"></span>
+                  <p><strong>Projects</strong></p>
+               </div>
+            </div><!-- End Stats Item -->
 
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['support'] ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong></p>
-            </div>
-          </div><!-- End Stats Item -->
+            <div class="col-lg-3 col-md-6">
+               <div class="stats-item">
+                  <i class="bi bi-headset"></i>
+                  <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['support'] ?>"
+                     data-purecounter-duration="1" class="purecounter"></span>
+                  <p><strong>Hours Of Support</strong></p>
+               </div>
+            </div><!-- End Stats Item -->
 
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['worker'] ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong></p>
-            </div>
-          </div><!-- End Stats Item -->
+            <div class="col-lg-3 col-md-6">
+               <div class="stats-item">
+                  <i class="bi bi-people"></i>
+                  <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['worker'] ?>"
+                     data-purecounter-duration="1" class="purecounter"></span>
+                  <p><strong>Hard Workers</strong></p>
+               </div>
+            </div><!-- End Stats Item -->
 
          </div>
 
@@ -148,8 +152,8 @@ $sumary_res = mysqli_fetch_assoc($result);
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <p><?= $skill_res['disc'] ?></p>
+         <h2>Skills</h2>
+         <p><?= $skill_res['disc'] ?></p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -158,51 +162,63 @@ $sumary_res = mysqli_fetch_assoc($result);
 
             <div class="col-lg-6">
 
-            <div class="progress">
-              <span class="skill"><span><?= $skill_res['skill1'] ?></span> <i class="val"><?= $skill_res['percentage1']. '%' ?></i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage1'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+               <div class="progress">
+                  <span class="skill"><span><?= $skill_res['skill1'] ?></span> <i
+                        class="val"><?= $skill_res['percentage1']. '%' ?></i></span>
+                  <div class="progress-bar-wrap">
+                     <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage1'] ?>"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </div><!-- End Skills Item -->
 
-            <div class="progress">
-              <span class="skill"><span><?= $skill_res['skill2'] ?></span> <i class="val"><?= $skill_res['percentage2'] . '%' ?></i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage2'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+               <div class="progress">
+                  <span class="skill"><span><?= $skill_res['skill2'] ?></span> <i
+                        class="val"><?= $skill_res['percentage2'] . '%' ?></i></span>
+                  <div class="progress-bar-wrap">
+                     <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage2'] ?>"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </div><!-- End Skills Item -->
 
-            <div class="progress">
-              <span class="skill"><span><?= $skill_res['skill3'] ?></span> <i class="val"><?= $skill_res['percentage3'] . '%' ?></i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage3'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+               <div class="progress">
+                  <span class="skill"><span><?= $skill_res['skill3'] ?></span> <i
+                        class="val"><?= $skill_res['percentage3'] . '%' ?></i></span>
+                  <div class="progress-bar-wrap">
+                     <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage3'] ?>"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </div><!-- End Skills Item -->
 
             </div>
 
             <div class="col-lg-6">
 
-            <div class="progress">
-              <span class="skill"><span><?= $skill_res['skill4'] ?></span> <i class="val"><?= $skill_res['percentage4'] . '%' ?></i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage4'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+               <div class="progress">
+                  <span class="skill"><span><?= $skill_res['skill4'] ?></span> <i
+                        class="val"><?= $skill_res['percentage4'] . '%' ?></i></span>
+                  <div class="progress-bar-wrap">
+                     <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage4'] ?>"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </div><!-- End Skills Item -->
 
-            <div class="progress">
-              <span class="skill"><span><?= $skill_res['skill5'] ?></span> <i class="val"><?= $skill_res['percentage5'] . '%' ?></i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage5'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+               <div class="progress">
+                  <span class="skill"><span><?= $skill_res['skill5'] ?></span> <i
+                        class="val"><?= $skill_res['percentage5'] . '%' ?></i></span>
+                  <div class="progress-bar-wrap">
+                     <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage5'] ?>"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </div><!-- End Skills Item -->
 
-            <div class="progress">
-              <span class="skill"><span><?= $skill_res['skill6'] ?></span> <i class="val"><?= $skill_res['percentage6'] . '%' ?></i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage6'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+               <div class="progress">
+                  <span class="skill"><span><?= $skill_res['skill6'] ?></span> <i
+                        class="val"><?= $skill_res['percentage6'] . '%' ?></i></span>
+                  <div class="progress-bar-wrap">
+                     <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage6'] ?>"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               </div><!-- End Skills Item -->
 
             </div>
 
@@ -222,6 +238,7 @@ $sumary_res = mysqli_fetch_assoc($result);
       </div><!-- End Section Title -->
 
       <div class="container">
+
 
          <div class="row">
 
@@ -687,7 +704,7 @@ $sumary_res = mysqli_fetch_assoc($result);
                      <i class="bi bi-geo-alt flex-shrink-0"></i>
                      <div>
                         <h3>Address</h3>
-                        <p>A108 Adam Street, New York, NY 535022</p>
+                        <p><?= $about_res['city']?></p>
                      </div>
                   </div><!-- End Info Item -->
 
@@ -695,7 +712,7 @@ $sumary_res = mysqli_fetch_assoc($result);
                      <i class="bi bi-telephone flex-shrink-0"></i>
                      <div>
                         <h3>Call Us</h3>
-                        <p>+1 5589 55488 55</p>
+                        <p><?= $about_res['phone']?></p>
                      </div>
                   </div><!-- End Info Item -->
 
@@ -703,7 +720,7 @@ $sumary_res = mysqli_fetch_assoc($result);
                      <i class="bi bi-envelope flex-shrink-0"></i>
                      <div>
                         <h3>Email Us</h3>
-                        <p>info@example.com</p>
+                        <p><?= $about_res['email']?></p>
                      </div>
                   </div><!-- End Info Item -->
 
@@ -715,37 +732,49 @@ $sumary_res = mysqli_fetch_assoc($result);
             </div>
 
             <div class="col-lg-7">
-               <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                  data-aos-delay="200">
+               <form action="./controller/Contact.php" method="post">
                   <div class="row gy-4">
 
                      <div class="col-md-6">
                         <label for="name-field" class="pb-2">Your Name</label>
-                        <input type="text" name="name" id="name-field" class="form-control" required="">
+                        <input type="text" name="name" id="name-field"
+                           class="form-control <?= isset($_SESSION['errors']['name_error']) ? 'is-invalid' : null?> ">
+                        <span class="text-danger"><?=$_SESSION['errors']['name_error'] ?? null?></span>
                      </div>
 
                      <div class="col-md-6">
                         <label for="email-field" class="pb-2">Your Email</label>
-                        <input type="email" class="form-control" name="email" id="email-field" required="">
+                        <input type="email"
+                           class="form-control <?= isset($_SESSION['errors']['email_error']) ? 'is-invalid' : null?>"
+                           name="email" id="email-field">
+                        <span class="text-danger"><?=$_SESSION['errors']['email_error'] ?? null?></span>
                      </div>
 
                      <div class="col-md-12">
                         <label for="subject-field" class="pb-2">Subject</label>
-                        <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                        <input type="text"
+                           class="form-control <?= isset($_SESSION['errors']['subject_error']) ? 'is-invalid' : null?>"
+                           name="subject" id="subject-field">
+                        <span class="text-danger"><?=$_SESSION['errors']['subject_error'] ?? null?></span>
                      </div>
 
                      <div class="col-md-12">
                         <label for="message-field" class="pb-2">Message</label>
-                        <textarea class="form-control" name="message" rows="10" id="message-field"
-                           required=""></textarea>
+                        <textarea
+                           class="form-control <?= isset($_SESSION['errors']['message_error']) ? 'is-invalid' : null?>"
+                           name="message" rows="10" id="message-field"></textarea>
+                        <span class="text-danger"><?=$_SESSION['errors']['message_error'] ?? null?></span>
                      </div>
-
                      <div class="col-md-12 text-center">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                        <button type="submit">Send Message</button>
+                        <span class="text-success"><?=$_SESSION['sccess'] ?? null?></span><br>
+                        <button type="submit" style="color: #ffffff;
+                        margin-top:10px;
+                        background: #149ddd;
+                        border: 0;
+                        padding: 10px 30px;
+                        transition: 0.4s;
+                        border-radius: 50px;">
+                           Send Message</button>
                      </div>
 
                   </div>
@@ -762,4 +791,6 @@ $sumary_res = mysqli_fetch_assoc($result);
 
 <?php 
  include_once "./include/footer.php";
+ unset($_SESSION['errors']);
+ unset($_SESSION['sccess']);
 ?>
