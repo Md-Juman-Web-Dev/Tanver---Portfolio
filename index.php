@@ -17,7 +17,7 @@ $about_res= mysqli_fetch_assoc( $about_result );
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
+      <img src="<?= './uploads/banners/' .$banner_res['img'] ?>" alt="" data-aos="fade-in" class="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <h2><?= $banner_res['name'] ?></h2>

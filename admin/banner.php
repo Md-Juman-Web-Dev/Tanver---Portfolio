@@ -12,7 +12,7 @@ $res = mysqli_fetch_assoc($result);
                 <div class="card rounded-0 shadow">
                     <div class="card-header">Update Banner</div>
                     <div class="card-body">
-                        <form action="../controller/UpdateBanner.php" method="post">
+                        <form enctype="multipart/form-data" action="../controller/UpdateBanner.php" method="post">
                             <div class="form-group">
                                 <label for="name">Enter Name</label>
                                 <input value="<?= $res['name'] ?>" type="text" id="name" name="name" class="form-control">
@@ -31,6 +31,16 @@ $res = mysqli_fetch_assoc($result);
                                     <?= $_SESSION['success'] ?? null ?>
                                 </span>
                             </div>
+
+
+                            <div class="form-group">
+                            <label class="d-block" for="profile_img_input"><img src="<?= '../uploads/banners/'. $res['img']?>" alt="cover" class="img-fluid profile_image"
+                                        style="width:100%;height:100%;object-fit:cover;object-position:center;"></label>
+                                <input name="banner_img" class="d-none" type="file" id="profile_img_input">
+                                <span class="text-danger">
+                                    <?= $_SESSION['errors']['profile_image_error'] ?? null?>
+                                </span>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-sm">Update</button>
                         </form>
                     </div>
@@ -44,3 +54,17 @@ include './include/footer.php';
 unset($_SESSION['errors']['name_error'], $_SESSION['errors']['skill_error']);
 unset($_SESSION['success']);
 ?>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#profile_img_input').change(function () {
+            let file = $(this)[0].files[0]
+            let url = URL.createObjectURL(file)
+            $('.profile_image').attr('src', url)
+
+
+        })
+
+    })
+</script>
