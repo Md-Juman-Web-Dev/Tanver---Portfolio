@@ -1,6 +1,5 @@
 <?php
 include './include/header.php';
-include '../database/db.php';
 
 $query = "SELECT * FROM about WHERE id='1'";
 $result = mysqli_query($conn, $query);
@@ -14,7 +13,7 @@ $res = mysqli_fetch_assoc($result);
                 <div class="card rounded-0 shadow">
                     <div class="card-header">Update About Details</div>
                     <div class="card-body">
-                        <form action="../controller/UpdateAbout.php" method="post">
+                        <form enctype="multipart/form-data" action="../controller/UpdateAbout.php" method="post">
                             <div class="form-group">
                                 <label for="about">About Me</label>
                                 <textarea name="about" id="about" class="form-control"><?= $res['aboutme'] ?></textarea>
@@ -24,8 +23,11 @@ $res = mysqli_fetch_assoc($result);
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>About Image</label>
-                                        <label class="d-block" for="profile_img_input"><img src="../assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle profile_image" style="width:258px;height:258px;object-fit:cover;object-position:center;"></label>
-                                        <input name="img" class="d-none" type="file" id="profile_img_input">
+                                        <label class="d-block" for="profile_img_input"><img src="<?= !empty($res['img']) ? '../uploads/users/' . $res['img'] : 'https://api.dicebear.com/9.x/initials/svg?seed='.$name; ?>" alt="" class="img-fluid rounded-circle profile_image" style="width:258px;height:258px;object-fit:cover;object-position:center;"></label>
+                                        <input name="profile_img" class="d-none" type="file" id="profile_img_input">
+                                        <span class="text-danger">
+                                            <?= $_SESSION['errors']['profile_image_error'] ?? null ?>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -102,6 +104,7 @@ $res = mysqli_fetch_assoc($result);
 <?php 
 include './include/footer.php';
 unset($_SESSION['success']);
+unset($_SESSION['errors']);
 ?>
  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>

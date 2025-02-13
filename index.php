@@ -1,6 +1,5 @@
 <?php 
 include_once "./include/header.php";
-include './database/db.php';
 //*Query For Banner part
 $banner_query = "SELECT * FROM banner WHERE id='1'";
 $banner_result = mysqli_query($conn, $banner_query);
@@ -39,7 +38,7 @@ $about_res= mysqli_fetch_assoc( $about_result );
 
         <div class="row gy-4 justify-content-center">
           <div class="col-lg-4">
-            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="">
+            <img src="<?= './uploads/users/'. $about_res['img'] ?>" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 content">
             <h2><?= $about_res['stitle'] ?></h2>

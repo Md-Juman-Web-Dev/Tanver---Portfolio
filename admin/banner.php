@@ -1,6 +1,5 @@
 <?php
 include './include/header.php';
-include '../database/db.php';
 $query = "SELECT * FROM banner WHERE id='1'";
 $result = mysqli_query($conn, $query);
 $res = mysqli_fetch_assoc($result);

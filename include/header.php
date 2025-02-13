@@ -1,10 +1,24 @@
+<?php
+session_start();
+include './database/db.php';
+$query = "SELECT * FROM banner WHERE id='1'";
+$result = mysqli_query($conn, $query);
+$res = mysqli_fetch_assoc($result);
+
+//*Query For About Part
+$about_query = "SELECT * FROM about WHERE id='1'";
+$about_result = mysqli_query($conn, $about_query);
+$about_res= mysqli_fetch_assoc( $about_result );
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - iPortfolio Bootstrap Template</title>
+  <title>Tanvir Ahmed Shawon - Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -43,13 +57,13 @@
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <div class="profile-img">
-      <img src="./assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
+      <img style="width: 200px; height=200px;" src="<?= './uploads/users/' .$about_res['img']  ?>" alt="" class="img-fluid rounded-circle">
     </div>
 
     <a href="index.html" class="logo d-flex align-items-center justify-content-center">
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <!-- <img src="./assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">Alex Smith</h1>
+      <h1 class="sitename"><?= $res['name'] ?></h1>
     </a>
 
     <div class="social-links text-center">

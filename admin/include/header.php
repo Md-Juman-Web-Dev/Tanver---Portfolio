@@ -4,7 +4,20 @@ if (!isset($_SESSION["auth"])){
   session_unset();
   session_destroy();
   header("Location: ../index.php");
+  exit();
 }
+$name = $_SESSION['auth']['fname'];
+include '../database/db.php';
+$query = "SELECT * FROM about WHERE id='1'";
+$result = mysqli_query($conn, $query);
+$res = mysqli_fetch_assoc($result);
+
+
+//*Query Admin
+$id= $_SESSION['auth']['id'];
+$admin_query = "SELECT * FROM admin WHERE id='$id'";
+$admin_result = mysqli_query($conn, $admin_query);
+$admin_row = mysqli_fetch_assoc($admin_result);
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +26,7 @@ if (!isset($_SESSION["auth"])){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin2 </title>
+    <title>Admin Tanvir - NexGen</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/feather/feather.css">
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -31,7 +44,7 @@ if (!isset($_SESSION["auth"])){
     <!-- inject:css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+     <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
   </head>
   <body class="with-welcome-text">
     <div class="container-scroller">
@@ -146,10 +159,10 @@ if (!isset($_SESSION["auth"])){
             </li>
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
               <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle" src="https://api.dicebear.com/9.x/initials/svg?seed=<?= $_SESSION['auth']['fname'] ?>" alt="Profile image"> </a>
+                <img style="width: 30px; height: 30px;" class="img-xs rounded-circle" src="<?= !empty($admin_row['img']) ? '../uploads/admins/' . $admin_row['img'] : 'https://api.dicebear.com/9.x/initials/svg?seed='.$name; ?>" alt="Profile image"> </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img style="width: 100px;" class="img-md rounded-circle" src="https://api.dicebear.com/9.x/initials/svg?seed=<?= $_SESSION['auth']['fname'] ?>" alt="Profile image">
+                  <img style="width: 150px; height: 150px;" class="img-md rounded-circle" src="<?= !empty($admin_row['img']) ? '../uploads/admins/' . $admin_row['img'] : 'https://api.dicebear.com/9.x/initials/svg?seed='.$name; ?>" alt="Profile image">
                   <p class="mb-1 mt-3 fw-semibold"><?= $_SESSION['auth']['fname'] ?></p>
                   <p class="fw-light text-muted mb-0"><?= $_SESSION['auth']['email'] ?></p>
                 </div>
