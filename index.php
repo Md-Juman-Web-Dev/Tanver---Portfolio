@@ -84,32 +84,32 @@ $about_res= mysqli_fetch_assoc( $about_result );
           <div class="col-lg-3 col-md-6">
             <div class="stats-item">
               <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['client'] ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Happy Clients</strong></p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['project'] ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Projects</strong></p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item">
               <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
+              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['support'] ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hours Of Support</strong></p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item">
               <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+              <span data-purecounter-start="1" data-purecounter-end="<?= $stats_res['worker'] ?>" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hard Workers</strong></p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -125,7 +125,7 @@ $about_res= mysqli_fetch_assoc( $about_result );
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Skills</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p><?= $skill_res['disc'] ?></p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -135,23 +135,23 @@ $about_res= mysqli_fetch_assoc( $about_result );
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
+              <span class="skill"><span><?= $skill_res['skill1'] ?></span> <i class="val"><?= $skill_res['percentage1']. '%' ?></i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage1'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>CSS</span> <i class="val">90%</i></span>
+              <span class="skill"><span><?= $skill_res['skill2'] ?></span> <i class="val"><?= $skill_res['percentage2'] . '%' ?></i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage2'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
+              <span class="skill"><span><?= $skill_res['skill3'] ?></span> <i class="val"><?= $skill_res['percentage3'] . '%' ?></i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage3'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
@@ -160,23 +160,23 @@ $about_res= mysqli_fetch_assoc( $about_result );
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">80%</i></span>
+              <span class="skill"><span><?= $skill_res['skill4'] ?></span> <i class="val"><?= $skill_res['percentage4'] . '%' ?></i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage4'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>WordPress/CMS</span> <i class="val">90%</i></span>
+              <span class="skill"><span><?= $skill_res['skill5'] ?></span> <i class="val"><?= $skill_res['percentage5'] . '%' ?></i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage5'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>Photoshop</span> <i class="val">55%</i></span>
+              <span class="skill"><span><?= $skill_res['skill6'] ?></span> <i class="val"><?= $skill_res['percentage6'] . '%' ?></i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage6'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 

@@ -15,6 +15,16 @@ $social_query = "SELECT * FROM social_links WHERE id='1'";
 $social_result = mysqli_query($conn, $social_query);
 $social_res= mysqli_fetch_assoc($social_result);
 
+//*Query Stats
+$stats_query = "SELECT * FROM stats WHERE id='1'";
+$stats_result = mysqli_query($conn, $stats_query);
+$stats_res = mysqli_fetch_assoc($stats_result);
+
+//*Query Skill
+$skill_query = "SELECT * FROM skills WHERE id='1'";
+$skill_result = mysqli_query($conn, $skill_query);
+$skill_res = mysqli_fetch_assoc($skill_result);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,14 +55,6 @@ $social_res= mysqli_fetch_assoc($social_result);
   <!-- Main CSS File -->
   <link href="./assets/css/main.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
