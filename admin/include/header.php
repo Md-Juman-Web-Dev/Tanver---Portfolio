@@ -19,6 +19,16 @@ $admin_query = "SELECT * FROM admin WHERE id='$id'";
 $admin_result = mysqli_query($conn, $admin_query);
 $admin_row = mysqli_fetch_assoc($admin_result);
 
+//*Query Stats
+$stats_query = "SELECT * FROM stats WHERE id='1'";
+$stats_result = mysqli_query($conn, $stats_query);
+$stats_res = mysqli_fetch_assoc($stats_result);
+
+//*Query Skill
+$skill_query = "SELECT * FROM skills WHERE id='1'";
+$skill_result = mysqli_query($conn, $skill_query);
+$skill_res = mysqli_fetch_assoc($skill_result);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,22 +208,27 @@ $admin_row = mysqli_fetch_assoc($admin_result);
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./about.php">
+              <a class="nav-link" data-bs-toggle="collapse" href="#about" aria-expanded="false" aria-controls="tables">
                 <i class="menu-icon mdi mdi-card-text-outline"></i>
                 <span class="menu-title">About</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                <i class="menu-icon mdi mdi-chart-line"></i>
-                <span class="menu-title">Charts</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="charts">
+              <div class="collapse" id="about">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.php">ChartJs</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="./about.php">About</a></li>
                 </ul>
               </div>
+              <div class="collapse" id="about">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="./stats.php">Stats</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./skills.php">
+                <i class="menu-icon mdi mdi-chart-line"></i>
+                <span class="menu-title">Skills</span>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link"  href="./sumary.php" ">
