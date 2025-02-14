@@ -766,7 +766,6 @@ $sumary_res = mysqli_fetch_assoc($result);
                         <span class="text-danger"><?=$_SESSION['errors']['message_error'] ?? null?></span>
                      </div>
                      <div class="col-md-12 text-center">
-                        <span class="text-success"><?=$_SESSION['sccess'] ?? null?></span><br>
                         <button type="submit" style="color: #ffffff;
                         margin-top:10px;
                         background: #149ddd;
@@ -787,10 +786,30 @@ $sumary_res = mysqli_fetch_assoc($result);
 
    </section><!-- /Contact Section -->
 
+
 </main>
+<?php if (isset($_SESSION['success'])): ?>
+  <script>
+    Swal.fire({
+      title: "<?= $_SESSION['success'] ?>",
+      icon: "success"
+    });
+  </script>
+  <?php unset($_SESSION['success']); // Clear success message after displaying ?>
+<?php endif; ?>
+
+<?php if (!empty($_SESSION['errors']['email_error'])): ?>
+  <script>
+    Swal.fire({
+      title: "<?= $_SESSION['errors']['email_error'] ?>",
+      icon: "error"
+    });
+  </script>
+  <?php unset($_SESSION['errors']['email_error']); // Clear email error after displaying ?>
+<?php endif; ?>
 
 <?php 
  include_once "./include/footer.php";
  unset($_SESSION['errors']);
- unset($_SESSION['sccess']);
+ unset($_SESSION['success']);
 ?>

@@ -55,6 +55,7 @@ $skill_res = mysqli_fetch_assoc($skill_result);
   <!-- Main CSS File -->
   <link href="./assets/css/main.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="index-page">
