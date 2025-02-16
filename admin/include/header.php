@@ -6,6 +6,7 @@ if (!isset($_SESSION["auth"])){
   header("Location: ../index.php");
   exit();
 }
+
 $name = $_SESSION['auth']['fname'];
 include '../database/db.php';
 $query = "SELECT * FROM about WHERE id='1'";
@@ -29,6 +30,13 @@ $skill_query = "SELECT * FROM skills WHERE id='1'";
 $skill_result = mysqli_query($conn, $skill_query);
 $skill_res = mysqli_fetch_assoc($skill_result);
 
+
+//*project query
+$project_query = "SELECT * FROM portfolio WHERE id='$id'";
+$project_result = mysqli_query($conn, $project_query);
+$project_row = mysqli_fetch_assoc($project_result);
+print_r($project_row);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +55,8 @@ $skill_res = mysqli_fetch_assoc($skill_result);
    <link rel="stylesheet" href="assets/vendors/simple-line-icons/css/simple-line-icons.css">
    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+   <link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
+   <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
    <!-- endinject -->
    <!-- Plugin css for this page -->
    <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
@@ -266,21 +276,10 @@ $skill_res = mysqli_fetch_assoc($skill_result);
                   </a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                  <a class="nav-link" href="./protfolio.php">
                      <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                     <span class="menu-title">User Pages</span>
-                     <i class="menu-arrow"></i>
+                     <span class="menu-title">Protfoilo</span>
                   </a>
-                  <div class="collapse" id="auth">
-                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.php"> Blank Page </a>
-                        </li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.php"> 404 </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.php"> 500 </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/login.php"> Login </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/register.php"> Register </a></li>
-                     </ul>
-                  </div>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="docs/documentation.php">
