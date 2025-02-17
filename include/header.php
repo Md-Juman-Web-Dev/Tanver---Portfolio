@@ -25,6 +25,8 @@ $skill_query = "SELECT * FROM skills WHERE id='1'";
 $skill_result = mysqli_query($conn, $skill_query);
 $skill_res = mysqli_fetch_assoc($skill_result);
 
+//*
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +69,7 @@ $skill_res = mysqli_fetch_assoc($skill_result);
       <img style="width: 200px; height=200px;" src="<?= './uploads/users/' .$about_res['img']  ?>" alt="" class="img-fluid rounded-circle">
     </div>
 
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+    <a href="index.php" class="logo d-flex align-items-center justify-content-center">
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <!-- <img src="./assets/img/logo.png" alt=""> -->
       <h1 class="sitename"><?= $res['name'] ?></h1>

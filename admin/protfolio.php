@@ -10,6 +10,10 @@ $category_result = $conn->query($category_query);
             <div class="card rounded-0 shadow">
                 <div class="card-header">Update Protfolio</div>
                 <div class="card-body">
+                        <div class="text-end">
+                            <a href="./all-category.php" class="btn btn-primary btn-sm">All Category</a>
+                            <a href="./all-protfolio.php" class="btn btn-primary btn-sm">All Post</a>
+                        </div>
                     <form action="../controller/AddCategory.php" method="post">
                         <label for="category">Category Name</label>
                         <div class="row mb-3">
@@ -27,22 +31,31 @@ $category_result = $conn->query($category_query);
                         </div>
                     </form>
 
-                    <form action="../controller/AddProject.php" method="post">
+                    <form enctype="multipart/form-data" action="../controller/AddProject.php" method="post">
                         <div class="form-gorup">
                             <label for="name" class="mb-2">Project Name</label>
                             <input type="text" name="name" id="name" class="form-control">
+                            <div class="text-danger">
+                                <?= $_SESSION['errors']['name_error'] ?? null ?>
+                            </div>
                         </div>
                         <div class="form-gorup">
                             <label for="disc" class="mb-2">Project Decription</label>
                             <input type="text" name="disc" id="disc" class="form-control">
+                            <div class="text-danger">
+                                <?= $_SESSION['errors']['disc_error'] ?? null ?>
+                            </div>
                         </div>
                         <div class="form-gorup">
                             <label for="client" class="mb-2">Client</label>
                             <input type="text" name="client" id="client" class="form-control">
+                            <div class="text-danger">
+                                <?= $_SESSION['errors']['client_error'] ?? null ?>
+                            </div>
                         </div>
                         <div class="form-gorup">
                             <label for="date" class="mb-2">Project Date</label>
-                            <input type="text" name="date" id="date" class="form-control">
+                            <input type="date" name="date" id="date" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="category" class="mb-2">Project Category</label>
@@ -54,21 +67,29 @@ $category_result = $conn->query($category_query);
                                     </option>
                                 <?php endwhile; ?>
                             </select>
+                            <div class="text-danger">
+                                <?= $_SESSION['errors']['category_error'] ?? null ?>
+                            </div>
                         </div>
                         <div class="custom-file-container" data-upload-id="myUniqueUploadId">
                             <label class="mt-2">Project Images <a href="javascript:void(0)"
                                     class="custom-file-container__image-clear" title="Clear Image"> </a></label>
                             <label class="custom-file-container__custom-file">
-                                <input name="project_img" type="file"
+                                <input name="project_img[]" type="file"
                                     class="custom-file-container__custom-file__custom-file-input" accept="*" multiple
-                                    aria-label="Choose File">
+                                    aria-label="Choose File" required>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                                 <span class="custom-file-container__custom-file__custom-file-control"></span>
                             </label>
                             <div class="custom-file-container__image-preview"></div>
+                            <div class="text-danger">
+                                <?= $_SESSION['errors']['category_error'] ?? null ?>
+                            </div>
                         </div>
-                                    //Todo:
-                                    //!tommorow
+                        <div class="text-success">
+                                <?= $_SESSION['success'] ?? null ?>
+                            </div>
+                                    
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
