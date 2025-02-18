@@ -301,9 +301,7 @@ while ($row = mysqli_fetch_assoc($category_result)) {
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
          <h2>Portfolio</h2>
-         <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-            in iste officiis commodi quidem hic quas.</p>
+         <p>We map your success in business through digital platforms as a Google ads, Facebook ads & Web analytics agency. We implement proven planning & strategy to generate sales. Additionally, provide business report for grabbing your potential customer.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
