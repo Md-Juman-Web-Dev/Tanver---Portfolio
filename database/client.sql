@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2025 at 06:55 PM
+-- Generation Time: Feb 27, 2025 at 07:18 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -83,15 +83,16 @@ CREATE TABLE `banner` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `skills` varchar(255) NOT NULL,
-  `img` varchar(255) DEFAULT NULL
+  `img` varchar(255) DEFAULT NULL,
+  `cta_link` varchar(450) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `banner`
 --
 
-INSERT INTO `banner` (`id`, `name`, `skills`, `img`) VALUES
-(1, 'Tanvir Ahmed  Shawon', 'Digital Marketing, UI/UX Design', 'banner-67b3770a34e12.jpg');
+INSERT INTO `banner` (`id`, `name`, `skills`, `img`, `cta_link`) VALUES
+(1, 'Tanvir Ahmed  Shawon', 'Digital Marketing, UI/UX Design', 'banner-67c01ac997d18.jpg', 'https://www.facebook.com/tanvirshawon03');
 
 -- --------------------------------------------------------
 
@@ -109,8 +110,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Facebook'),
-(2, 'Google');
+(1, 'Facebook');
 
 -- --------------------------------------------------------
 
@@ -131,8 +131,25 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `name`, `email`, `subject`, `message`) VALUES
-(41, 'Cade Cardenas', 'cyvy@mailinator.com', 'Voluptatum do nihil ', 'Sed reprehenderit c'),
-(42, 'Myra Myers', 'xekas@mailinator.com', 'Deleniti molestiae i', 'Irure a commodo porr');
+(0, 'Alfreda Sparks', 'cewuza@mailinator.com', 'Quis nulla anim reru', 'Dolore fuga Et reru');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cv_uploads`
+--
+
+CREATE TABLE `cv_uploads` (
+  `id` int(11) NOT NULL,
+  `cv_file` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cv_uploads`
+--
+
+INSERT INTO `cv_uploads` (`id`, `cv_file`) VALUES
+(1, 'Ramadan-Kormo-Porikolpona.pdf');
 
 -- --------------------------------------------------------
 
@@ -156,10 +173,8 @@ CREATE TABLE `portfolio` (
 --
 
 INSERT INTO `portfolio` (`id`, `title`, `category`, `client`, `project_date`, `project_url`, `description`, `img`) VALUES
-(28, 'Hope Gomez', 'Facebook', 'Et dolores esse com', '2017-12-03', NULL, 'Explicabo Dolorem a', 'portfolio-67b3666c3e45e.png,portfolio-67b3666c3e853.png,portfolio-67b3666c3eac4.png,portfolio-67b3666c3ed28.png'),
-(29, 'Juman', 'Facebook', 'Sadman', '2025-02-17', NULL, 'Juman Shostha Project', 'portfolio-67b3670c1af93.png'),
-(30, 'Rae Miles', 'Google', 'Quis totam totam sit', '2025-02-08', NULL, 'Magna voluptatem in ', 'portfolio-67b3694bb5920.png'),
-(31, 'Ariana Buckley', 'Vegetables', 'Dolore nostrum eaque', '1995-06-11', NULL, 'Nulla ipsum aliquid', 'portfolio-67b3695bc13c6.png');
+(33, 'Jennifer Dejesus', 'Facebook', 'Assumenda suscipit i', '1986-04-03', NULL, 'Proident ad id dolo', 'portfolio-67bf79066b61d.png'),
+(34, 'Autumn Duffy', 'Facebook', 'Atque non voluptas t', '2016-03-05', NULL, 'Iusto in voluptate d', 'portfolio-67c01b8c51fed.png');
 
 -- --------------------------------------------------------
 
@@ -259,6 +274,86 @@ CREATE TABLE `sumary` (
 INSERT INTO `sumary` (`id`, `resume`, `description`, `title`, `present`, `experion`, `labelOne`, `labelTwo`, `labelThree`) VALUES
 (1, 'Hi, I’m Tanvir Ahmed Shawon, a passionate and results-driven digital marketer with a knack for crafting data-driven strategies that deliver measurable results. With [X years] of experience in the ever-evolving world of digital marketing, I specialize in helping brands grow their online presence, engage their target audience, and achieve their business goals.', 'deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.', 'Senior graphic design specialist', '2019 - Present', 'Experion, New York, NY', 'Lead in the design, development, and implementation of the graphic, layout, and production communication materials', 'Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project.', 'Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testimonial`
+--
+
+CREATE TABLE `testimonial` (
+  `id` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `occu` varchar(256) NOT NULL,
+  `review` varchar(256) NOT NULL,
+  `img` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `testimonial`
+--
+
+INSERT INTO `testimonial` (`id`, `name`, `occu`, `review`, `img`) VALUES
+(10, 'Saalim Sadman', 'Web Developer', 'Tanvir is awesome. He ranked my page in google. He is a awesome guy!', 'clients-67c0ab6621014.jpeg'),
+(11, 'Bo Cobb', 'Autem deserunt quisq', 'Corrupti voluptate ', 'clients-67c0ab80c8974.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visitors`
+--
+
+CREATE TABLE `visitors` (
+  `id` int(11) NOT NULL,
+  `ip_address` varchar(50) DEFAULT NULL,
+  `visit_time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `visitors`
+--
+
+INSERT INTO `visitors` (`id`, `ip_address`, `visit_time`) VALUES
+(87, '::1', '2025-02-27 17:29:46'),
+(88, '::1', '2025-02-27 17:29:56'),
+(89, '::1', '2025-02-27 17:30:00'),
+(90, '::1', '2025-02-27 17:30:04'),
+(91, '::1', '2025-02-27 17:30:05'),
+(92, '::1', '2025-02-27 17:30:06'),
+(93, '::1', '2025-02-27 17:30:09'),
+(94, '::1', '2025-02-27 17:30:10'),
+(95, '::1', '2025-02-27 17:30:11'),
+(96, '::1', '2025-02-27 17:30:12'),
+(97, '::1', '2025-02-27 17:33:19'),
+(98, '::1', '2025-02-27 17:34:07'),
+(99, '::1', '2025-02-27 17:34:17'),
+(100, '::1', '2025-02-27 17:34:26'),
+(101, '::1', '2025-02-27 17:34:31'),
+(102, '::1', '2025-02-27 17:38:31'),
+(103, '::1', '2025-02-27 17:39:54'),
+(104, '::1', '2025-02-27 17:40:16'),
+(105, '::1', '2025-02-27 17:40:37'),
+(106, '::1', '2025-02-27 17:41:04'),
+(107, '::1', '2025-02-27 17:41:12'),
+(108, '::1', '2025-02-27 17:41:21'),
+(109, '::1', '2025-02-27 17:42:04'),
+(110, '::1', '2025-02-27 17:42:26'),
+(111, '::1', '2025-02-27 17:42:38'),
+(112, '::1', '2025-02-27 17:42:57'),
+(113, '::1', '2025-02-27 17:43:20'),
+(114, '::1', '2025-02-27 17:43:33'),
+(115, '::1', '2025-02-27 17:43:47'),
+(116, '::1', '2025-02-27 17:44:01'),
+(117, '::1', '2025-02-27 17:45:21'),
+(118, '::1', '2025-02-27 17:45:49'),
+(119, '::1', '2025-02-27 17:46:06'),
+(120, '::1', '2025-02-27 17:47:26'),
+(121, '::1', '2025-02-27 17:48:00'),
+(122, '::1', '2025-02-27 18:12:45'),
+(123, '::1', '2025-02-27 18:14:00'),
+(124, '::1', '2025-02-27 18:14:26'),
+(125, '::1', '2025-02-27 18:15:59'),
+(126, '::1', '2025-02-27 18:16:51');
+
 --
 -- Indexes for dumped tables
 --
@@ -288,6 +383,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cv_uploads`
+--
+ALTER TABLE `cv_uploads`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `portfolio`
 --
 ALTER TABLE `portfolio`
@@ -309,6 +410,18 @@ ALTER TABLE `social_links`
 -- Indexes for table `stats`
 --
 ALTER TABLE `stats`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `testimonial`
+--
+ALTER TABLE `testimonial`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `visitors`
+--
+ALTER TABLE `visitors`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -340,10 +453,16 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `cv_uploads`
+--
+ALTER TABLE `cv_uploads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `portfolio`
 --
 ALTER TABLE `portfolio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `skills`
@@ -362,6 +481,18 @@ ALTER TABLE `social_links`
 --
 ALTER TABLE `stats`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `testimonial`
+--
+ALTER TABLE `testimonial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `visitors`
+--
+ALTER TABLE `visitors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once "./include/header.php";
 //*Query For Banner part
 $banner_query = "SELECT * FROM banner WHERE id='1'";
@@ -8,11 +8,11 @@ $banner_res = mysqli_fetch_assoc($banner_result);
 //*Query For About Part
 $about_query = "SELECT * FROM about WHERE id='1'";
 $about_result = mysqli_query($conn, $about_query);
-$about_res= mysqli_fetch_assoc( $about_result );
+$about_res = mysqli_fetch_assoc($about_result);
 
 //*Query For Sumary Part
 $query = "SELECT * FROM sumary WHERE id='1'";
-$result = mysqli_query($conn,$query);
+$result = mysqli_query($conn, $query);
 $sumary_res = mysqli_fetch_assoc($result);
 
 //* Fetch portfolio items from the database
@@ -28,8 +28,8 @@ $category_result = mysqli_query($conn, $category_query);
 // Store categories in an array
 $categories = [];
 while ($row = mysqli_fetch_assoc($category_result)) {
-    // Change 'category_name' to 'name' as per the query result
-    $categories[] = $row['name'];  // Use the correct key from the query result
+   // Change 'category_name' to 'name' as per the query result
+   $categories[] = $row['name'];  // Use the correct key from the query result
 }
 
 //*Fetch Testimonial
@@ -44,7 +44,7 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
    <!-- Hero Section -->
    <section id="hero" class="hero section dark-background">
 
-      <img src="<?= './uploads/banners/' .$banner_res['img'] ?>" alt="" data-aos="fade-in" class="">
+      <img src="<?= './uploads/banners/' . $banner_res['img'] ?>" alt="" data-aos="fade-in" class="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
          <h2><?= $banner_res['name'] ?></h2>
@@ -52,7 +52,8 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
                class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
                class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
 
-         <a target="_blank" href="<?= $banner_res['cta_link'] ?>"><button type="button" class="hireBtn">Hire Me!</button>      </a>
+         <a target="_blank" href="<?= $banner_res['cta_link'] ?>"><button type="button" class="hireBtn">Hire
+               Me!</button> </a>
       </div>
 
    </section><!-- /Hero Section -->
@@ -70,7 +71,7 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
 
          <div class="row gy-4 justify-content-center">
             <div class="col-lg-4">
-               <img src="<?= './uploads/users/'. $about_res['img'] ?>" class="img-fluid" alt="">
+               <img src="<?= './uploads/users/' . $about_res['img'] ?>" class="img-fluid" alt="">
             </div>
             <div class="col-lg-8 content">
                <h2><?= $about_res['stitle'] ?></h2>
@@ -178,7 +179,7 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
 
                <div class="progress">
                   <span class="skill"><span><?= $skill_res['skill1'] ?></span> <i
-                        class="val"><?= $skill_res['percentage1']. '%' ?></i></span>
+                        class="val"><?= $skill_res['percentage1'] . '%' ?></i></span>
                   <div class="progress-bar-wrap">
                      <div class="progress-bar" role="progressbar" aria-valuenow="<?= $skill_res['percentage1'] ?>"
                         aria-valuemin="0" aria-valuemax="100"></div>
@@ -249,64 +250,70 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
          <h2>Portfolio</h2>
-         <p>We map your success in business through digital platforms as a Google ads, Facebook ads & Web analytics agency. We implement proven planning & strategy to generate sales. Additionally, provide business report for grabbing your potential customer.</p>
+         <p>We map your success in business through digital platforms as a Google ads, Facebook ads & Web analytics
+            agency. We implement proven planning & strategy to generate sales. Additionally, provide business report for
+            grabbing your potential customer.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
-      <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-<!-- Portfolio Filters (Dynamic Categories) -->
-<ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-    <li data-filter="*" class="filter-active">All</li>
-    <?php foreach ($categories as $category): ?>
-        <li data-filter=".filter-<?= strtolower(str_replace(' ', '-', $category)) ?>">
-            <?= htmlspecialchars($category) ?>
-        </li>
-    <?php endforeach; ?>
-</ul><!-- End Portfolio Filters -->
+            <!-- Portfolio Filters (Dynamic Categories) -->
+            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+               <li data-filter="*" class="filter-active">All</li>
+               <?php foreach ($categories as $category): ?>
+                  <li data-filter=".filter-<?= strtolower(str_replace(' ', '-', $category)) ?>">
+                     <?= htmlspecialchars($category) ?>
+                  </li>
+               <?php endforeach; ?>
+            </ul><!-- End Portfolio Filters -->
 
-<div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-<?php foreach ($prot_items as $prot_item): ?>
-    <?php
-        // Split the 'img' column to get an array of image filenames
-        $images = explode(',', $prot_item['img']); 
-        // Use the first image for the thumbnail
-        $first_image = $images[0] ?? 'default.jpg'; 
-    ?>
-    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-<?= strtolower(str_replace(' ', '-', $prot_item['category'])) ?>">
-        <div class="portfolio-content h-100">
-            <!-- Display the first image as the thumbnail -->
-            <img src="uploads/portfolio/<?= htmlspecialchars($first_image) ?>" class="img-fluid" alt="<?= htmlspecialchars($prot_item['title']) ?>">
+               <?php foreach ($prot_items as $prot_item): ?>
+                  <?php
+                  // Split the 'img' column to get an array of image filenames
+                  $images = explode(',', $prot_item['img']);
+                  // Use the first image for the thumbnail
+                  $first_image = $images[0] ?? 'default.jpg';
+                  ?>
+                  <div
+                     class="col-lg-4 col-md-6 portfolio-item isotope-item filter-<?= strtolower(str_replace(' ', '-', $prot_item['category'])) ?>">
+                     <div class="portfolio-content h-100">
+                        <!-- Display the first image as the thumbnail -->
+                        <img src="uploads/portfolio/<?= htmlspecialchars($first_image) ?>" class="img-fluid"
+                           alt="<?= htmlspecialchars($prot_item['title']) ?>">
 
-            <div class="portfolio-info">
-                <h4><?= htmlspecialchars($prot_item['title']) ?></h4>
-                <p><?= substr(htmlspecialchars($prot_item['description']), 0, 100) ?>...</p>
+                        <div class="portfolio-info">
+                           <h4><?= htmlspecialchars($prot_item['title']) ?></h4>
+                           <p><?= substr(htmlspecialchars($prot_item['description']), 0, 100) ?>...</p>
 
-                <!-- Lightbox for all images -->
-                <?php foreach ($images as $image): ?>
-                    <a href="uploads/portfolio/<?= htmlspecialchars($image) ?>" title="<?= htmlspecialchars($prot_item['title']) ?>"
-                       data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                        <i class="bi bi-zoom-in"></i>
-                    </a>
-                <?php endforeach; ?>
+                           <!-- Lightbox for all images -->
+                           <?php foreach ($images as $image): ?>
+                              <a href="uploads/portfolio/<?= htmlspecialchars($image) ?>"
+                                 title="<?= htmlspecialchars($prot_item['title']) ?>" data-gallery="portfolio-gallery-app"
+                                 class="glightbox preview-link">
+                                 <i class="bi bi-zoom-in"></i>
+                              </a>
+                           <?php endforeach; ?>
 
-                <!-- Portfolio details page -->
-                <a href="portfolio-details.php?id=<?= $prot_item['id'] ?>" title="More Details" class="details-link">
-                    <i class="bi bi-link-45deg"></i>
-                </a>
-            </div>
-        </div>
-    </div><!-- End Portfolio Item -->
-<?php endforeach; ?>
+                           <!-- Portfolio details page -->
+                           <a href="portfolio-details.php?id=<?= $prot_item['id'] ?>" title="More Details"
+                              class="details-link">
+                              <i class="bi bi-link-45deg"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+               <?php endforeach; ?>
 
-</div><!-- End Isotope Container -->
-</div><!-- End Isotope Layout -->
+            </div><!-- End Isotope Container -->
+         </div><!-- End Isotope Layout -->
 
-            </div><!-- End Portfolio Container -->
+      </div><!-- End Portfolio Container -->
 
-         </div>
+      </div>
 
       </div>
 
@@ -317,7 +324,9 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
          <h2>Services</h2>
-         <p>We map your success in business through digital platforms as a Google ads, Facebook ads & Web analytics agency. We implement proven planning & strategy to generate sales. Additionally, provide business report for grabbing your potential customer.</p>
+         <p>We map your success in business through digital platforms as a Google ads, Facebook ads & Web analytics
+            agency. We implement proven planning & strategy to generate sales. Additionally, provide business report for
+            grabbing your potential customer.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -376,21 +385,25 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
             }
             </script>
             <div class="swiper-wrapper">
-            <?php foreach($testimonials as $testimonial): ?>
-               <div class="swiper-slide">
-                  <div class="testimonial-item">
-                     <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        <span><?= $testimonial['review'] ?></span>
-                        <i class="bi bi-quote quote-icon-right"></i>
-                     </p>
-                     <img src="./uploads/clients/<?= $testimonial['img']?> ?? https://api.dicebear.com/9.x/initials/svg?seed=<?= $testimonial['name'] ?>" style="width: 100px; height: 100px;" class="testimonial-img img-fluid" alt="">
-                     <h3><?= $testimonial['name'] ?></h3>
-                     <h4><?= $testimonial['occu'] ?></h4>
+               <?php foreach ($testimonials as $testimonial): ?>
+                  <div class="swiper-slide">
+                     <div class="testimonial-item">
+                        <p>
+                           <i class="bi bi-quote quote-icon-left"></i>
+                           <span><?= $testimonial['review'] ?></span>
+                           <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                        <img
+                           src="<?= !empty($testimonial['img']) ? "./uploads/clients/" . $testimonial['img'] : 'https://api.dicebear.com/9.x/initials/svg?seed=' . urlencode($testimonial['name']) ?>"
+                           style="width: 100px; height: 100px;" class="testimonial-img img-fluid"
+                           alt="<?= htmlspecialchars($testimonial['name']) ?>">
+
+                        <h3><?= $testimonial['name'] ?></h3>
+                        <h4><?= $testimonial['occu'] ?></h4>
+                     </div>
                   </div>
-               </div>
                <?php endforeach ?>
-               <!--todo: End testimonial item --> 
+               <!--todo: End testimonial item -->
             </div>
             <div class="swiper-pagination"></div>
          </div>
@@ -419,7 +432,7 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
                      <i class="bi bi-geo-alt flex-shrink-0"></i>
                      <div>
                         <h3>Address</h3>
-                        <p><?= $about_res['city']?></p>
+                        <p><?= $about_res['city'] ?></p>
                      </div>
                   </div><!-- End Info Item -->
 
@@ -427,7 +440,7 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
                      <i class="bi bi-telephone flex-shrink-0"></i>
                      <div>
                         <h3>Call Us</h3>
-                        <p><?= $about_res['phone']?></p>
+                        <p><?= $about_res['phone'] ?></p>
                      </div>
                   </div><!-- End Info Item -->
 
@@ -435,7 +448,7 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
                      <i class="bi bi-envelope flex-shrink-0"></i>
                      <div>
                         <h3>Email Us</h3>
-                        <p><?= $about_res['email']?></p>
+                        <p><?= $about_res['email'] ?></p>
                      </div>
                   </div><!-- End Info Item -->
 
@@ -453,32 +466,32 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
                      <div class="col-md-6">
                         <label for="name-field" class="pb-2">Your Name</label>
                         <input type="text" name="name" id="name-field"
-                           class="form-control <?= isset($_SESSION['errors']['name_error']) ? 'is-invalid' : null?> ">
-                        <span class="text-danger"><?=$_SESSION['errors']['name_error'] ?? null?></span>
+                           class="form-control <?= isset($_SESSION['errors']['name_error']) ? 'is-invalid' : null ?> ">
+                        <span class="text-danger"><?= $_SESSION['errors']['name_error'] ?? null ?></span>
                      </div>
 
                      <div class="col-md-6">
                         <label for="email-field" class="pb-2">Your Email</label>
                         <input type="email"
-                           class="form-control <?= isset($_SESSION['errors']['email_error']) ? 'is-invalid' : null?>"
+                           class="form-control <?= isset($_SESSION['errors']['email_error']) ? 'is-invalid' : null ?>"
                            name="email" id="email-field">
-                        <span class="text-danger"><?=$_SESSION['errors']['email_error'] ?? null?></span>
+                        <span class="text-danger"><?= $_SESSION['errors']['email_error'] ?? null ?></span>
                      </div>
 
                      <div class="col-md-12">
                         <label for="subject-field" class="pb-2">Subject</label>
                         <input type="text"
-                           class="form-control <?= isset($_SESSION['errors']['subject_error']) ? 'is-invalid' : null?>"
+                           class="form-control <?= isset($_SESSION['errors']['subject_error']) ? 'is-invalid' : null ?>"
                            name="subject" id="subject-field">
-                        <span class="text-danger"><?=$_SESSION['errors']['subject_error'] ?? null?></span>
+                        <span class="text-danger"><?= $_SESSION['errors']['subject_error'] ?? null ?></span>
                      </div>
 
                      <div class="col-md-12">
                         <label for="message-field" class="pb-2">Message</label>
                         <textarea
-                           class="form-control <?= isset($_SESSION['errors']['message_error']) ? 'is-invalid' : null?>"
+                           class="form-control <?= isset($_SESSION['errors']['message_error']) ? 'is-invalid' : null ?>"
                            name="message" rows="10" id="message-field"></textarea>
-                        <span class="text-danger"><?=$_SESSION['errors']['message_error'] ?? null?></span>
+                        <span class="text-danger"><?= $_SESSION['errors']['message_error'] ?? null ?></span>
                      </div>
                      <div class="col-md-12 text-center">
                         <button type="submit" style="color: #ffffff;
@@ -504,27 +517,27 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
 
 </main>
 <?php if (isset($_SESSION['success'])): ?>
-  <script>
-    Swal.fire({
-      title: "<?= $_SESSION['success'] ?>",
-      icon: "success"
-    });
-  </script>
-  <?php unset($_SESSION['success']); // Clear success message after displaying ?>
+   <script>
+      Swal.fire({
+         title: "<?= $_SESSION['success'] ?>",
+         icon: "success"
+      });
+   </script>
+   <?php unset($_SESSION['success']); // Clear success message after displaying ?>
 <?php endif; ?>
 
 <?php if (!empty($_SESSION['errors']['email_error'])): ?>
-  <script>
-    Swal.fire({
-      title: "<?= $_SESSION['errors']['email_error'] ?>",
-      icon: "error"
-    });
-  </script>
-  <?php unset($_SESSION['errors']['email_error']); // Clear email error after displaying ?>
+   <script>
+      Swal.fire({
+         title: "<?= $_SESSION['errors']['email_error'] ?>",
+         icon: "error"
+      });
+   </script>
+   <?php unset($_SESSION['errors']['email_error']); // Clear email error after displaying ?>
 <?php endif; ?>
 
-<?php 
- include_once "./include/footer.php";
- unset($_SESSION['errors']);
- unset($_SESSION['success']);
+<?php
+include_once "./include/footer.php";
+unset($_SESSION['errors']);
+unset($_SESSION['success']);
 ?>
