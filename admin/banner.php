@@ -31,6 +31,10 @@ $res = mysqli_fetch_assoc($result);
                                     <?= $_SESSION['success'] ?? null ?>
                                 </span>
                             </div>
+                            <div class="form-group">
+                                <label for="cta">Cta Action</label>
+                                <input value="<?= $res['cta_link'] ?>" type="text" class="form-control" name="cta_link" id="cta">
+                            </div>
 
 
                             <div class="form-group">

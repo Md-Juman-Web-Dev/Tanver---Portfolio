@@ -37,7 +37,7 @@ if(count($errors)>0){
    $query = "INSERT INTO client(name, email, subject, message) VALUES ('$name','$email','$subject','$message')";
    $reslut= mysqli_query($conn,$query);
    if($reslut){
-      $_SESSION['sccess'] = 'Message Successfully Seed';
+      $_SESSION['success'] = 'Message Sent successfully';
       header("Location: ../index.php#contact");
    }
 }

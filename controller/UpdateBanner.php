@@ -3,6 +3,7 @@ session_start();
 include '../database/db.php';
 $name = $_REQUEST["name"];
 $skill = $_REQUEST["skill"];
+$cta = $_REQUEST['cta'];
 $cover = $_FILES['banner_img'];
 $extention = pathinfo($cover['name'])['extension'];
 $errors=[];
@@ -25,7 +26,7 @@ if(count($errors) > 0){
     $filename = 'banner-' . uniqid() . ".$extention";
     $isupload = move_uploaded_file($cover["tmp_name"], '../uploads/banners/' .$filename);
 
-    $query = "UPDATE banner SET name='$name',skills='$skill', img='$filename' WHERE id='1'";
+    $query = "UPDATE banner SET name='$name',skills='$skill', img='$filename', cta_link='$cta' WHERE id='1'";
     $result = mysqli_query($conn, $query);
     $_SESSION['success']= 'Updated Successfully';
     $_SESSION['auth']['img'] = $filename;
