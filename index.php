@@ -28,14 +28,27 @@ $category_result = mysqli_query($conn, $category_query);
 // Store categories in an array
 $categories = [];
 while ($row = mysqli_fetch_assoc($category_result)) {
-   // Change 'category_name' to 'name' as per the query result
-   $categories[] = $row['name'];  // Use the correct key from the query result
+    // Change 'category_name' to 'name' as per the query result
+    $categories[] = $row['name'];  // Use the correct key from the query result
 }
 
 //*Fetch Testimonial
 $testi_query = "SELECT * FROM testimonial";
 $testi_result = mysqli_query($conn, $testi_query);
 $testimonials = mysqli_fetch_all($testi_result, 1);
+
+//* Fetch Service
+$service_query = "SELECT * FROM services ";
+$service_result = mysqli_query($conn, $service_query);
+$services = mysqli_fetch_all($service_result,1);
+
+
+//* Fetch Service Title
+$service_title_query = "SELECT * FROM services_title WHERE 1";
+$service_title_result = mysqli_query($conn, $service_title_query);
+$service_titles = mysqli_fetch_all($service_title_result,1);
+
+//* Fetch CV from database 
 
 ?>
 
@@ -263,49 +276,49 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
             <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                <li data-filter="*" class="filter-active">All</li>
                <?php foreach ($categories as $category): ?>
-                  <li data-filter=".filter-<?= strtolower(str_replace(' ', '-', $category)) ?>">
-                     <?= htmlspecialchars($category) ?>
-                  </li>
+               <li data-filter=".filter-<?= strtolower(str_replace(' ', '-', $category)) ?>">
+                  <?= htmlspecialchars($category) ?>
+               </li>
                <?php endforeach; ?>
             </ul><!-- End Portfolio Filters -->
 
             <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
                <?php foreach ($prot_items as $prot_item): ?>
-                  <?php
-                  // Split the 'img' column to get an array of image filenames
-                  $images = explode(',', $prot_item['img']);
-                  // Use the first image for the thumbnail
-                  $first_image = $images[0] ?? 'default.jpg';
-                  ?>
-                  <div
-                     class="col-lg-4 col-md-6 portfolio-item isotope-item filter-<?= strtolower(str_replace(' ', '-', $prot_item['category'])) ?>">
-                     <div class="portfolio-content h-100">
-                        <!-- Display the first image as the thumbnail -->
-                        <img src="uploads/portfolio/<?= htmlspecialchars($first_image) ?>" class="img-fluid"
-                           alt="<?= htmlspecialchars($prot_item['title']) ?>">
+               <?php
+        // Split the 'img' column to get an array of image filenames
+        $images = explode(',', $prot_item['img']); 
+        // Use the first image for the thumbnail
+        $first_image = $images[0] ?? 'default.jpg'; 
+    ?>
+               <div
+                  class="col-lg-4 col-md-6 portfolio-item isotope-item filter-<?= strtolower(str_replace(' ', '-', $prot_item['category'])) ?>">
+                  <div class="portfolio-content h-100">
+                     <!-- Display the first image as the thumbnail -->
+                     <img src="uploads/portfolio/<?= htmlspecialchars($first_image) ?>" class="img-fluid"
+                        alt="<?= htmlspecialchars($prot_item['title']) ?>">
 
-                        <div class="portfolio-info">
-                           <h4><?= htmlspecialchars($prot_item['title']) ?></h4>
-                           <p><?= substr(htmlspecialchars($prot_item['description']), 0, 100) ?>...</p>
+                     <div class="portfolio-info">
+                        <h4><?= htmlspecialchars($prot_item['title']) ?></h4>
+                        <p><?= substr(htmlspecialchars($prot_item['description']), 0, 100) ?>...</p>
 
-                           <!-- Lightbox for all images -->
-                           <?php foreach ($images as $image): ?>
-                              <a href="uploads/portfolio/<?= htmlspecialchars($image) ?>"
-                                 title="<?= htmlspecialchars($prot_item['title']) ?>" data-gallery="portfolio-gallery-app"
-                                 class="glightbox preview-link">
-                                 <i class="bi bi-zoom-in"></i>
-                              </a>
-                           <?php endforeach; ?>
+                        <!-- Lightbox for all images -->
+                        <?php foreach ($images as $image): ?>
+                        <a href="uploads/portfolio/<?= htmlspecialchars($image) ?>"
+                           title="<?= htmlspecialchars($prot_item['title']) ?>" data-gallery="portfolio-gallery-app"
+                           class="glightbox preview-link">
+                           <i class="bi bi-zoom-in"></i>
+                        </a>
+                        <?php endforeach; ?>
 
-                           <!-- Portfolio details page -->
-                           <a href="portfolio-details.php?id=<?= $prot_item['id'] ?>" title="More Details"
-                              class="details-link">
-                              <i class="bi bi-link-45deg"></i>
-                           </a>
-                        </div>
+                        <!-- Portfolio details page -->
+                        <a href="portfolio-details.php?id=<?= $prot_item['id'] ?>" title="More Details"
+                           class="details-link">
+                           <i class="bi bi-link-45deg"></i>
+                        </a>
                      </div>
-                  </div><!-- End Portfolio Item -->
+                  </div>
+               </div><!-- End Portfolio Item -->
                <?php endforeach; ?>
 
             </div><!-- End Isotope Container -->
@@ -320,32 +333,36 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
    </section><!-- /Portfolio Section -->
    <!-- Services Section -->
    <section id="services" class="services section">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
          <h2>Services</h2>
-         <p>We map your success in business through digital platforms as a Google ads, Facebook ads & Web analytics
-            agency. We implement proven planning & strategy to generate sales. Additionally, provide business report for
-            grabbing your potential customer.</p>
+         <p><?= $service_titles[0]['title'] ?></p>
+
+
       </div><!-- End Section Title -->
 
       <div class="container">
 
          <div class="row gy-4">
 
-            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-               <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
-               <div>
-                  <h4 class="title"><a href="service-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-                  <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi
-                     sint occaecati cupiditate non provident</p>
+            <?php foreach ($services as $service): ?>
+            <div class="serviceCard col-lg-4 " data-aos="fade-up" data-aos-delay="200">
+               <div class="serviceCardImage text-center">
+                  <img style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;"
+                     src="./uploads/services/<?=$service['image']?>" alt="Service 1">
+               </div>
+               <div class="serviceCardContent">
+                  <h3 class="text-center my-3"><?=$service['sarvice_name']?></h3>
+                  <p><?= $service['sarvice_description']?></p>
                </div>
             </div>
-            <!-- End Service Item -->
-         </div>
+            <?php endforeach; ?>
 
+         </div>
+         <!-- End Service Item -->
       </div>
 
+      </div>
    </section><!-- /Services Section -->
 
    <!-- Testimonials Section -->
@@ -385,23 +402,21 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
             }
             </script>
             <div class="swiper-wrapper">
-               <?php foreach ($testimonials as $testimonial): ?>
-                  <div class="swiper-slide">
-                     <div class="testimonial-item">
-                        <p>
-                           <i class="bi bi-quote quote-icon-left"></i>
-                           <span><?= $testimonial['review'] ?></span>
-                           <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                        <img
-                           src="<?= !empty($testimonial['img']) ? "./uploads/clients/" . $testimonial['img'] : 'https://api.dicebear.com/9.x/initials/svg?seed=' . urlencode($testimonial['name']) ?>"
-                           style="width: 100px; height: 100px;" class="testimonial-img img-fluid"
-                           alt="<?= htmlspecialchars($testimonial['name']) ?>">
-
-                        <h3><?= $testimonial['name'] ?></h3>
-                        <h4><?= $testimonial['occu'] ?></h4>
-                     </div>
+               <?php foreach($testimonials as $testimonial): ?>
+               <div class="swiper-slide">
+                  <div class="testimonial-item">
+                     <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        <span><?= $testimonial['review'] ?></span>
+                        <i class="bi bi-quote quote-icon-right"></i>
+                     </p>
+                     <img
+                        src="./uploads/clients/<?= $testimonial['img']?> ?? https://api.dicebear.com/9.x/initials/svg?seed=<?= $testimonial['name'] ?>"
+                        style="width: 100px; height: 100px;" class="testimonial-img img-fluid" alt="">
+                     <h3><?= $testimonial['name'] ?></h3>
+                     <h4><?= $testimonial['occu'] ?></h4>
                   </div>
+               </div>
                <?php endforeach ?>
                <!--todo: End testimonial item -->
             </div>
@@ -517,27 +532,27 @@ $testimonials = mysqli_fetch_all($testi_result, 1);
 
 </main>
 <?php if (isset($_SESSION['success'])): ?>
-   <script>
-      Swal.fire({
-         title: "<?= $_SESSION['success'] ?>",
-         icon: "success"
-      });
-   </script>
-   <?php unset($_SESSION['success']); // Clear success message after displaying ?>
+<script>
+Swal.fire({
+   title: "<?= $_SESSION['success'] ?>",
+   icon: "success"
+});
+</script>
+<?php unset($_SESSION['success']); // Clear success message after displaying ?>
 <?php endif; ?>
 
 <?php if (!empty($_SESSION['errors']['email_error'])): ?>
-   <script>
-      Swal.fire({
-         title: "<?= $_SESSION['errors']['email_error'] ?>",
-         icon: "error"
-      });
-   </script>
-   <?php unset($_SESSION['errors']['email_error']); // Clear email error after displaying ?>
+<script>
+Swal.fire({
+   title: "<?= $_SESSION['errors']['email_error'] ?>",
+   icon: "error"
+});
+</script>
+<?php unset($_SESSION['errors']['email_error']); // Clear email error after displaying ?>
 <?php endif; ?>
 
-<?php
-include_once "./include/footer.php";
-unset($_SESSION['errors']);
-unset($_SESSION['success']);
+<?php 
+ include_once "./include/footer.php";
+ unset($_SESSION['errors']);
+ unset($_SESSION['success']);
 ?>

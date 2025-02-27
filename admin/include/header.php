@@ -7,6 +7,7 @@ if (!isset($_SESSION["auth"])){
   exit();
 }
 
+
 $name = $_SESSION['auth']['fname'];
 include '../database/db.php';
 $query = "SELECT * FROM about WHERE id='1'";
@@ -55,7 +56,8 @@ print_r($project_row);
    <link rel="stylesheet" href="assets/vendors/simple-line-icons/css/simple-line-icons.css">
    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
-   <link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
+   <link rel="stylesheet" type="text/css"
+      href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
    <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
    <!-- endinject -->
    <!-- Plugin css for this page -->
@@ -180,6 +182,12 @@ print_r($project_row);
                   <a class="nav-link" href="./protfolio.php">
                      <i class="menu-icon mdi mdi-account-circle-outline"></i>
                      <span class="menu-title">Protfoilo</span>
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="./services.php">
+                     <i class="menu-icon mdi mdi-layers-outline"></i>
+                     <span class="menu-title">Service</span>
                   </a>
                </li>
                <li class="nav-item">
